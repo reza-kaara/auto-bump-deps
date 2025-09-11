@@ -4,13 +4,13 @@
   "packageRules": [
     {
       "matchManagers": ["pip_requirements"],
-      "matchPaths": ["python/**"],
+      "matchPaths": ["python/requirements.txt"],
       "groupName": "python deps",
       "commitMessagePrefix": "deps(python): "
     },
     {
       "matchManagers": ["gradle"],
-      "matchPaths": ["java/**"],
+      "matchPaths": ["java/build.gradle"],
       "groupName": "java deps",
       "commitMessagePrefix": "deps(java): "
     }
