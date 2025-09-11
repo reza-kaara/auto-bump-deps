@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchManagers": ["pip_requirements"],
+      "matchPaths": ["python/**"],
+      "groupName": "python deps",
+      "commitMessagePrefix": "deps(python): "
+    },
+    {
+      "matchManagers": ["gradle"],
+      "matchPaths": ["java/**"],
+      "groupName": "java deps",
+      "commitMessagePrefix": "deps(java): "
+    }
+  ]
+}
