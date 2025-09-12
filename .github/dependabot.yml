@@ -6,3 +6,9 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "deps(java)"
+  - package-ecosystem: "pip"
+    directory: "/python"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(python)"
