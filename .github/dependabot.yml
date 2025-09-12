@@ -12,3 +12,7 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "deps(python)"
+    groups:
+      python-deps:
+        patterns:
+          - "*"
