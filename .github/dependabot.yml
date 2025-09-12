@@ -16,3 +16,9 @@ updates:
       python-deps:
         patterns:
           - "*"
+  - package-ecosystem: "terraform"
+    directory: "/terraform"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(terraform)"
