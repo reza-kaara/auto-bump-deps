@@ -9,7 +9,8 @@
     },
     {
       "matchManagers": ["gradle"],
-      "groupName": "Java deps",
+      "matchPackageNames": ["org.springframework.boot"],
+      "groupName": "Spring Boot plugin",
       "commitMessagePrefix": "deps(java): "
     },
     {
@@ -19,3 +20,4 @@
     }
   ]
 }
+
