@@ -1,4 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"]
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchManagers": ["pip_requirements"],
+      "groupName": "Python deps",
+      "commitMessagePrefix": "deps(python): "
+    },
+    {
+      "matchManagers": ["gradle"],
+      "groupName": "Java deps",
+      "commitMessagePrefix": "deps(java): "
+    },
+    {
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "Safe updates",
+      "automerge": true
+    }
+  ]
 }
