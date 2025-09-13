@@ -1,4 +1,4 @@
-flask==2.0.1
-werkzeug==2.0.3
-requests==2.25.0
-urllib3==1.26.6
+flask==2.3.3
+werkzeug==2.3.8
+requests==2.32.5
+urllib3==1.26.20
