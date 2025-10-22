@@ -24,8 +24,6 @@ updates:
         update-types: ["minor"]
       - dependency-name: "org.apache.commons:commons-lang3"
         update-types: ["major"]
-
-    security-updates: true
 # Grouping rules
     groups:
 # One PR for all security-related updates
@@ -39,7 +37,6 @@ updates:
         patterns:
           - "*"
         update-types: ["minor", "patch"]
-
 # Isolate major upgrades
       major-updates:
         applies-to: version-updates
