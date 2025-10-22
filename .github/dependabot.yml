@@ -39,15 +39,15 @@ updates:
         patterns:
           - "*"
         update-types:
-          - "version-update:semver-minor"
-          - "version-update:semver-patch"
+          - "minor"
+          - "patch"
 # Isolate major upgrades
       major-updates:
         applies-to: version-updates
         patterns:
           - "*"
         update-types:
-          - "version-update:semver-major"
+          - "major"
 # -------------------------------------------------------------------
 # Python / pip
 # -------------------------------------------------------------------
@@ -74,7 +74,8 @@ updates:
           - "^requests$"
     ignore:
       - dependency-name: "numpy"
-        update-types: ["major"]
+        update-types:
+          - "version-update:semver-major"
 # -------------------------------------------------------------------
 # Terraform
 # -------------------------------------------------------------------
