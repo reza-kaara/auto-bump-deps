@@ -21,9 +21,11 @@ updates:
       - dependency-name: "com.fasterxml.jackson.core:jackson-databind"
     ignore:
       - dependency-name: "com.google.guava:guava"
-        update-types: ["minor"]
+        update-types:
+          - "version-update:semver-minor"
       - dependency-name: "org.apache.commons:commons-lang3"
-        update-types: ["major"]
+        update-types:
+          - "version-update:semver-major"
 # Grouping rules
     groups:
 # One PR for all security-related updates
@@ -36,13 +38,16 @@ updates:
         applies-to: version-updates
         patterns:
           - "*"
-        update-types: ["minor", "patch"]
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
 # Isolate major upgrades
       major-updates:
         applies-to: version-updates
         patterns:
           - "*"
-        update-types: ["major"]
+        update-types:
+          - "version-update:semver-major"
 # -------------------------------------------------------------------
 # Python / pip
 # -------------------------------------------------------------------
