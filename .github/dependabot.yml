@@ -1,40 +1,54 @@
 version: 2
 updates:
+# -------------------------------------------------------------------
+# Java / Gradle
+# -------------------------------------------------------------------
   - package-ecosystem: "gradle"
     directory: "/java"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "deps(java)"
+      include: "scope"
     open-pull-requests-limit: 4
     labels:
       - "deps"
       - "lang:java"
+# Matching rules
     allow:
       - dependency-type: "direct"
       - dependency-name: "org.springframework.boot:*"
       - dependency-name: "com.fasterxml.jackson.core:jackson-databind"
     ignore:
       - dependency-name: "com.google.guava:guava"
-        update-types: ["version-update:semver-minor"]
+        update-types: ["minor"]
       - dependency-name: "org.apache.commons:commons-lang3"
-        update-types: ["version-update:semver-major"]
+        update-types: ["major"]
+
     security-updates: true
+# Grouping rules
     groups:
+# One PR for all security-related updates
       security-fixes:
         applies-to: security-updates
         patterns:
           - "*"
+# One PR for safe version bumps
       regular-updates:
         applies-to: version-updates
         patterns:
           - "*"
         update-types: ["minor", "patch"]
+
+# Isolate major upgrades
       major-updates:
         applies-to: version-updates
         patterns:
           - "*"
-        update-types: ["version-update:semver-major"]
+        update-types: ["major"]
+# -------------------------------------------------------------------
+# Python / pip
+# -------------------------------------------------------------------
   - package-ecosystem: "pip"
     directory: "/python"
     schedule:
@@ -58,7 +72,10 @@ updates:
           - "^requests$"
     ignore:
       - dependency-name: "numpy"
-        update-types: ["version-update:semver-major"]
+        update-types: ["major"]
+# -------------------------------------------------------------------
+# Terraform
+# -------------------------------------------------------------------
   - package-ecosystem: "terraform"
     directory: "/terraform"
     schedule:
@@ -75,6 +92,9 @@ updates:
       terraform-modules:
         patterns:
           - ".*module.*"
+# -------------------------------------------------------------------
+# GitHub Actions
+# -------------------------------------------------------------------
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -84,6 +104,9 @@ updates:
     labels:
       - "deps"
       - "ci"
+# -------------------------------------------------------------------
+# Docker
+# -------------------------------------------------------------------
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
