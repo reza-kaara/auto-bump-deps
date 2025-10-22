@@ -6,19 +6,90 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "deps(java)"
+    open-pull-requests-limit: 4
+    labels:
+      - "deps"
+      - "lang:java"
+    allow:
+      - dependency-type: "direct"
+      - dependency-name: "org.springframework.boot:*"
+      - dependency-name: "com.fasterxml.jackson.core:jackson-databind"
+    ignore:
+      - dependency-name: "com.google.guava:guava"
+        update-types: ["version-update:semver-minor"]
+      - dependency-name: "org.apache.commons:commons-lang3"
+        update-types: ["version-update:semver-major"]
+    security-updates: true
+    groups:
+      security-fixes:
+        applies-to: security-updates
+        patterns:
+          - "*"
+      regular-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types: ["minor", "patch"]
+      major-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "pip"
     directory: "/python"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "deps(python)"
+    open-pull-requests-limit: 2
+    labels:
+      - "deps"
+      - "lang:python"
     groups:
-      python-deps:
+      python-core:
+        patterns:
+          - "^django$"
+          - "^requests$"
+      python-others:
         patterns:
           - "*"
+        exclude-patterns:
+          - "^django$"
+          - "^requests$"
+    ignore:
+      - dependency-name: "numpy"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "terraform"
     directory: "/terraform"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "deps(terraform)"
+    labels:
+      - "deps"
+      - "infra"
+    groups:
+      terraform-providers:
+        patterns:
+          - "^hashicorp/.*"
+      terraform-modules:
+        patterns:
+          - ".*module.*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(actions)"
+    labels:
+      - "deps"
+      - "ci"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(docker)"
+    labels:
+      - "deps"
+      - "containers"
