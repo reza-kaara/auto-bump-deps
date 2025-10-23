@@ -14,6 +14,7 @@ updates:
     labels:
       - "deps"
       - "lang:java"
+    security-updates: true
 # Matching rules
     allow:
       - dependency-type: "direct"
