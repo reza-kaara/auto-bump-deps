@@ -6,7 +6,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/java"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     commit-message:
       prefix: "deps(java)"
       include: "scope"
